@@ -1,17 +1,21 @@
 openapi: 3.1.0
 info:
-  title: "Logivice API"
-  description: "Logivice API (service side application for Logivice)"
+  title: 'Logivice API'
+  description: 'Logivice API (service side application for Logivice)'
   version: 1.0.0
 servers:
-  - url: "https://api.scaas.ai"
+  -
+    url: 'https://api.scaas.ai'
 tags:
-  - name: Profile
-    description: ""
-  - name: Tracking
-    description: ""
-  - name: uOps
-    description: ""
+  -
+    name: Profile
+    description: ''
+  -
+    name: Tracking
+    description: ''
+  -
+    name: uOps
+    description: ''
 components:
   securitySchemes:
     default:
@@ -19,33 +23,36 @@ components:
       scheme: bearer
       description: 'You can create Bearer token by visiting your page <b>Profile -> "Api Tokens" -> "+"</b> button. Or you could use the same API with SPA through cookies as well (out of the box)'
 security:
-  - default: []
+  -
+    default: []
 paths:
-  "/api/v1/users/{user_id}/webhooks":
+  '/api/v1/users/{user_id}/webhooks':
     get:
-      summary: "Get All User Web Hooks"
+      summary: 'Get All User Web Hooks'
       operationId: getAllUserWebHooks
-      description: ""
+      description: ''
       parameters:
-        - in: query
+        -
+          in: query
           name: with
-          description: "allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partners subscriptions"
+          description: 'allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partners subscriptions'
           example: null
           required: false
           schema:
             type: string
-            description: "allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partners subscriptions"
+            description: 'allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partners subscriptions'
             example: null
             nullable: false
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         401:
-          description: ""
+          description: ''
           content:
             application/json:
               schema:
@@ -71,19 +78,20 @@ paths:
       tags:
         - Profile
     post:
-      summary: "Create New User Web Hook"
+      summary: 'Create New User Web Hook'
       operationId: createNewUserWebHook
-      description: ""
+      description: ''
       parameters:
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         401:
-          description: ""
+          description: ''
           content:
             application/json:
               schema:
@@ -117,79 +125,81 @@ paths:
               properties:
                 url:
                   type: string
-                  description: "Must be a valid URL."
-                  example: "https://www.effertz.org/beatae-ut-nobis-est-voluptas-eos-nihil"
+                  description: 'Must be a valid URL.'
+                  example: 'http://www.von.com/'
                   nullable: false
                 partner_ids:
                   type: array
-                  description: "The <code>id</code> of an existing record in the partners table."
+                  description: 'The <code>id</code> of an existing record in the partners table.'
                   example:
-                    - 18
+                    - 14
                   items:
                     type: integer
                 notifications:
                   type: array
-                  description: ""
+                  description: ''
                   example:
-                    - "device-temperature:limits-lower-limit-exceeded"
+                    - 'order:creating-from-api-failed'
                   items:
                     type: string
                     enum:
-                      - "shipment:delivered"
-                      - "device-temperature:limits-lower-limit-exceeded"
-                      - "device-temperature:limits-upper-limit-exceeded"
-                      - "device-temperature:limits-stabilized"
-                      - "shipment:status-changed"
-                      - "shipment:tag_assigned"
-                      - "courier-order:shipped"
-                      - "device:activated"
-                      - "device:seal_is_opened"
-                      - "device:had_shock"
-                      - "device:flipped"
-                      - "device:added_to_shipment"
-                      - "device:tag_assigned"
-                      - "device:reached-point-of-interest"
-                      - "device:left-point-of-interest"
-                      - "device:not-reached-point-of-interest"
-                      - "device:profile_configuration_changed"
-                      - "courier-tracking:status-changed"
-                      - "courier-tracking:exception"
-                      - "courier-tracking:missed-sla"
-                      - "courier-tracking:reached-point-of-interest"
-                      - "courier-tracking:left-point-of-interest"
-                      - "courier-tracking:not-reached-point-of-interest"
-                      - "courier-tracking:event"
-                      - "order:status-changed"
-                      - "order:created-from-api"
-                      - "order:creating-from-api-failed"
-                      - "order-item:created-from-api"
-                      - "order-item:creating-from-api-failed"
-                      - "warehouse-transaction-batch:parsing-finished"
+                      - 'shipment:delivered'
+                      - 'device-temperature:limits-lower-limit-exceeded'
+                      - 'device-temperature:limits-upper-limit-exceeded'
+                      - 'device-temperature:limits-stabilized'
+                      - 'shipment:status-changed'
+                      - 'shipment:tag_assigned'
+                      - 'courier-order:shipped'
+                      - 'device:activated'
+                      - 'device:seal_is_opened'
+                      - 'device:had_shock'
+                      - 'device:flipped'
+                      - 'device:added_to_shipment'
+                      - 'device:tag_assigned'
+                      - 'device:reached-point-of-interest'
+                      - 'device:left-point-of-interest'
+                      - 'device:not-reached-point-of-interest'
+                      - 'device:profile_configuration_changed'
+                      - 'courier-tracking:status-changed'
+                      - 'courier-tracking:exception'
+                      - 'courier-tracking:missed-sla'
+                      - 'courier-tracking:reached-point-of-interest'
+                      - 'courier-tracking:left-point-of-interest'
+                      - 'courier-tracking:not-reached-point-of-interest'
+                      - 'courier-tracking:event'
+                      - 'order:status-changed'
+                      - 'order:created-from-api'
+                      - 'order:creating-from-api-failed'
+                      - 'order-item:created-from-api'
+                      - 'order-item:creating-from-api-failed'
+                      - 'warehouse-transaction-batch:parsing-finished'
               required:
                 - url
     parameters:
-      - in: path
+      -
+        in: path
         name: user_id
         description: "The user's ID. Or 'me' to assign for own profile"
         example: me
         required: true
         schema:
           type: integer
-  "/api/v1/partner/{partner_id}/trackings/{tracking_id}/action/{action}":
+  '/api/v1/partner/{partner_id}/trackings/{tracking_id}/action/{action}':
     post:
       summary: Execute
       operationId: execute
-      description: ""
+      description: ''
       parameters:
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         200:
-          description: ""
+          description: ''
           content:
             application/json:
               schema:
@@ -215,42 +225,46 @@ paths:
       tags:
         - Tracking
     parameters:
-      - in: path
+      -
+        in: path
         name: partner_id
-        description: "The ID of the partner."
+        description: 'The ID of the partner.'
         example: 1
         required: true
         schema:
           type: integer
-      - in: path
+      -
+        in: path
         name: tracking_id
-        description: "The ID of the tracking."
+        description: 'The ID of the tracking.'
         example: 1
         required: true
         schema:
           type: integer
-      - in: path
+      -
+        in: path
         name: action
-        description: "The action."
+        description: 'The action.'
         example: sync-now
         required: true
         schema:
           type: string
-  "/api/v1/partner/{partner_id}/trackings":
+  '/api/v1/partner/{partner_id}/trackings':
     post:
-      summary: "Create New Courier Tracking Gateway"
+      summary: 'Create New Courier Tracking Gateway'
       operationId: createNewCourierTrackingGateway
-      description: ""
+      description: ''
       parameters:
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         200:
-          description: ""
+          description: ''
           content:
             application/json:
               schema:
@@ -270,35 +284,35 @@ paths:
                         text: Delivered
                         global_status: delivered
                         is_final: true
-                      tracking_link: "https://www.fedex.com/fedextrack/?trknbr=ABC123456789"
-                      created_at: "2025-04-01T09:30:00+00:00"
-                      updated_at: "2025-05-06T10:55:06+00:00"
+                      tracking_link: 'https://www.fedex.com/fedextrack/?trknbr=ABC123456789'
+                      created_at: '2025-04-01T09:30:00+00:00'
+                      updated_at: '2025-05-06T10:55:06+00:00'
                       company:
                         id: NDUxfDEyMzQ1Njc4OTA.
                         type: courier
                         name: FedEx
                       partner:
                         id: N3wxMjM0NTY3ODkw
-                        name: "Acme Corp"
+                        name: 'Acme Corp'
                       origin:
                         country_iso3: USA
-                        country_name: "United States"
-                        location: "NEW YORK - USA"
-                        city: "NEW YORK"
+                        country_name: 'United States'
+                        location: 'NEW YORK - USA'
+                        city: 'NEW YORK'
                       destination:
                         country_iso3: DEU
                         country_name: Germany
-                        location: "BERLIN - GERMANY"
+                        location: 'BERLIN - GERMANY'
                         city: BERLIN
                       dates:
-                        pickup_date: "2025-04-01T10:15:00+00:00"
-                        departure_date: "2025-04-01T14:30:00+00:00"
-                        estimated_arrival_date: "2025-04-05T09:00:00+00:00"
-                        delivery_date: "2025-04-05T11:25:00+00:00"
+                        pickup_date: '2025-04-01T10:15:00+00:00'
+                        departure_date: '2025-04-01T14:30:00+00:00'
+                        estimated_arrival_date: '2025-04-05T09:00:00+00:00'
+                        delivery_date: '2025-04-05T11:25:00+00:00'
                         discharge_date: null
-                        synced_at: "2025-05-06T10:55:06+00:00"
-                        created_at: "2025-04-01T09:30:00+00:00"
-                        updated_at: "2025-05-06T10:55:06+00:00"
+                        synced_at: '2025-05-06T10:55:06+00:00'
+                        created_at: '2025-04-01T09:30:00+00:00'
+                        updated_at: '2025-05-06T10:55:06+00:00'
                       shipment:
                         type: tracking_number
                         package_count: 3
@@ -307,82 +321,91 @@ paths:
                         co2e_in_kg: 125.8
                         order_id: ORD-12345
                       etas:
-                        - id: RVRBfDEyMzQ1Njc4OTA.
-                          eta: "2025-04-05T09:00:00+00:00"
+                        -
+                          id: RVRBfDEyMzQ1Njc4OTA.
+                          eta: '2025-04-05T09:00:00+00:00'
                           source: carrier
                       checkpoints:
-                        - id: Q0gxfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gxfDEyMzQ1Njc4OTA.
                           status: Delivered
                           status_code: DEL
-                          checkpoint_time: "2025-04-05T11:25:00+00:00"
-                          message: "Package delivered to recipient."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-05T11:25:00+00:00'
+                          message: 'Package delivered to recipient.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0gyfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gyfDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: OFD
-                          checkpoint_time: "2025-04-05T08:30:00+00:00"
-                          message: "Out for delivery."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-05T08:30:00+00:00'
+                          message: 'Out for delivery.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0gzfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gzfDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: ARR
-                          checkpoint_time: "2025-04-04T22:15:00+00:00"
-                          message: "Arrived at destination facility."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-04T22:15:00+00:00'
+                          message: 'Arrived at destination facility.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0g0fDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0g0fDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: DEP
-                          checkpoint_time: "2025-04-01T14:30:00+00:00"
-                          message: "Departed origin facility."
-                          location: "NEW YORK - USA"
+                          checkpoint_time: '2025-04-01T14:30:00+00:00'
+                          message: 'Departed origin facility.'
+                          location: 'NEW YORK - USA'
                           coordinates:
                             lat: 40.7128
                             lng: -74.006
-                        - id: Q0g1fDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0g1fDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: PU
-                          checkpoint_time: "2025-04-01T10:15:00+00:00"
-                          message: "Picked up by courier."
-                          location: "NEW YORK - USA"
+                          checkpoint_time: '2025-04-01T10:15:00+00:00'
+                          message: 'Picked up by courier.'
+                          location: 'NEW YORK - USA'
                           coordinates:
                             lat: 40.7128
                             lng: -74.006
                       transportations:
-                        - id: VFIxfDEyMzQ1Njc4OTA.
+                        -
+                          id: VFIxfDEyMzQ1Njc4OTA.
                           mode: air
-                          company: "FedEx Air"
+                          company: 'FedEx Air'
                           number: FX1234
-                          port_of_loading: "JFK Airport"
-                          port_of_destination: "Berlin Brandenburg Airport"
+                          port_of_loading: 'JFK Airport'
+                          port_of_destination: 'Berlin Brandenburg Airport'
                           dates:
-                            scheduled_departure: "2025-04-01T14:30:00+00:00"
-                            estimated_departure: "2025-04-01T14:30:00+00:00"
-                            actual_departure: "2025-04-01T14:45:00+00:00"
-                            scheduled_arrival: "2025-04-04T21:00:00+00:00"
-                            estimated_arrival: "2025-04-04T22:00:00+00:00"
-                            actual_arrival: "2025-04-04T22:15:00+00:00"
-                        - id: VFIyfDEyMzQ1Njc4OTA.
+                            scheduled_departure: '2025-04-01T14:30:00+00:00'
+                            estimated_departure: '2025-04-01T14:30:00+00:00'
+                            actual_departure: '2025-04-01T14:45:00+00:00'
+                            scheduled_arrival: '2025-04-04T21:00:00+00:00'
+                            estimated_arrival: '2025-04-04T22:00:00+00:00'
+                            actual_arrival: '2025-04-04T22:15:00+00:00'
+                        -
+                          id: VFIyfDEyMzQ1Njc4OTA.
                           mode: road
-                          company: "FedEx Ground"
+                          company: 'FedEx Ground'
                           number: FG5678
                           dates:
-                            scheduled_departure: "2025-04-05T08:00:00+00:00"
-                            estimated_departure: "2025-04-05T08:00:00+00:00"
-                            actual_departure: "2025-04-05T08:30:00+00:00"
-                            scheduled_arrival: "2025-04-05T11:00:00+00:00"
-                            estimated_arrival: "2025-04-05T11:30:00+00:00"
-                            actual_arrival: "2025-04-05T11:25:00+00:00"
+                            scheduled_departure: '2025-04-05T08:00:00+00:00'
+                            estimated_departure: '2025-04-05T08:00:00+00:00'
+                            actual_departure: '2025-04-05T08:30:00+00:00'
+                            scheduled_arrival: '2025-04-05T11:00:00+00:00'
+                            estimated_arrival: '2025-04-05T11:30:00+00:00'
+                            actual_arrival: '2025-04-05T11:25:00+00:00'
                       packages:
-                        - id: UEsxfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEsxfDEyMzQ1Njc4OTA.
                           ref: PKG001
                           type: box
                           weight: 8.5
@@ -392,7 +415,8 @@ paths:
                             width: 30
                             height: 20
                             unit: cm
-                        - id: UEsyfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEsyfDEyMzQ1Njc4OTA.
                           ref: PKG002
                           type: box
                           weight: 10.0
@@ -402,7 +426,8 @@ paths:
                             width: 40
                             height: 30
                             unit: cm
-                        - id: UEszfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEszfDEyMzQ1Njc4OTA.
                           ref: PKG003
                           type: pallet
                           weight: 6.0
@@ -458,13 +483,13 @@ paths:
                                 example: true
                           tracking_link:
                             type: string
-                            example: "https://www.fedex.com/fedextrack/?trknbr=ABC123456789"
+                            example: 'https://www.fedex.com/fedextrack/?trknbr=ABC123456789'
                           created_at:
                             type: string
-                            example: "2025-04-01T09:30:00+00:00"
+                            example: '2025-04-01T09:30:00+00:00'
                           updated_at:
                             type: string
-                            example: "2025-05-06T10:55:06+00:00"
+                            example: '2025-05-06T10:55:06+00:00'
                           company:
                             type: object
                             properties:
@@ -485,7 +510,7 @@ paths:
                                 example: N3wxMjM0NTY3ODkw
                               name:
                                 type: string
-                                example: "Acme Corp"
+                                example: 'Acme Corp'
                           origin:
                             type: object
                             properties:
@@ -494,13 +519,13 @@ paths:
                                 example: USA
                               country_name:
                                 type: string
-                                example: "United States"
+                                example: 'United States'
                               location:
                                 type: string
-                                example: "NEW YORK - USA"
+                                example: 'NEW YORK - USA'
                               city:
                                 type: string
-                                example: "NEW YORK"
+                                example: 'NEW YORK'
                           destination:
                             type: object
                             properties:
@@ -512,7 +537,7 @@ paths:
                                 example: Germany
                               location:
                                 type: string
-                                example: "BERLIN - GERMANY"
+                                example: 'BERLIN - GERMANY'
                               city:
                                 type: string
                                 example: BERLIN
@@ -521,28 +546,28 @@ paths:
                             properties:
                               pickup_date:
                                 type: string
-                                example: "2025-04-01T10:15:00+00:00"
+                                example: '2025-04-01T10:15:00+00:00'
                               departure_date:
                                 type: string
-                                example: "2025-04-01T14:30:00+00:00"
+                                example: '2025-04-01T14:30:00+00:00'
                               estimated_arrival_date:
                                 type: string
-                                example: "2025-04-05T09:00:00+00:00"
+                                example: '2025-04-05T09:00:00+00:00'
                               delivery_date:
                                 type: string
-                                example: "2025-04-05T11:25:00+00:00"
+                                example: '2025-04-05T11:25:00+00:00'
                               discharge_date:
                                 type: string
                                 example: null
                               synced_at:
                                 type: string
-                                example: "2025-05-06T10:55:06+00:00"
+                                example: '2025-05-06T10:55:06+00:00'
                               created_at:
                                 type: string
-                                example: "2025-04-01T09:30:00+00:00"
+                                example: '2025-04-01T09:30:00+00:00'
                               updated_at:
                                 type: string
-                                example: "2025-05-06T10:55:06+00:00"
+                                example: '2025-05-06T10:55:06+00:00'
                           shipment:
                             type: object
                             properties:
@@ -567,8 +592,9 @@ paths:
                           etas:
                             type: array
                             example:
-                              - id: RVRBfDEyMzQ1Njc4OTA.
-                                eta: "2025-04-05T09:00:00+00:00"
+                              -
+                                id: RVRBfDEyMzQ1Njc4OTA.
+                                eta: '2025-04-05T09:00:00+00:00'
                                 source: carrier
                             items:
                               type: object
@@ -578,55 +604,60 @@ paths:
                                   example: RVRBfDEyMzQ1Njc4OTA.
                                 eta:
                                   type: string
-                                  example: "2025-04-05T09:00:00+00:00"
+                                  example: '2025-04-05T09:00:00+00:00'
                                 source:
                                   type: string
                                   example: carrier
                           checkpoints:
                             type: array
                             example:
-                              - id: Q0gxfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gxfDEyMzQ1Njc4OTA.
                                 status: Delivered
                                 status_code: DEL
-                                checkpoint_time: "2025-04-05T11:25:00+00:00"
-                                message: "Package delivered to recipient."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-05T11:25:00+00:00'
+                                message: 'Package delivered to recipient.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0gyfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gyfDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: OFD
-                                checkpoint_time: "2025-04-05T08:30:00+00:00"
-                                message: "Out for delivery."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-05T08:30:00+00:00'
+                                message: 'Out for delivery.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0gzfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gzfDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: ARR
-                                checkpoint_time: "2025-04-04T22:15:00+00:00"
-                                message: "Arrived at destination facility."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-04T22:15:00+00:00'
+                                message: 'Arrived at destination facility.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0g0fDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0g0fDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: DEP
-                                checkpoint_time: "2025-04-01T14:30:00+00:00"
-                                message: "Departed origin facility."
-                                location: "NEW YORK - USA"
+                                checkpoint_time: '2025-04-01T14:30:00+00:00'
+                                message: 'Departed origin facility.'
+                                location: 'NEW YORK - USA'
                                 coordinates:
                                   lat: 40.7128
                                   lng: -74.006
-                              - id: Q0g1fDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0g1fDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: PU
-                                checkpoint_time: "2025-04-01T10:15:00+00:00"
-                                message: "Picked up by courier."
-                                location: "NEW YORK - USA"
+                                checkpoint_time: '2025-04-01T10:15:00+00:00'
+                                message: 'Picked up by courier.'
+                                location: 'NEW YORK - USA'
                                 coordinates:
                                   lat: 40.7128
                                   lng: -74.006
@@ -644,13 +675,13 @@ paths:
                                   example: DEL
                                 checkpoint_time:
                                   type: string
-                                  example: "2025-04-05T11:25:00+00:00"
+                                  example: '2025-04-05T11:25:00+00:00'
                                 message:
                                   type: string
-                                  example: "Package delivered to recipient."
+                                  example: 'Package delivered to recipient.'
                                 location:
                                   type: string
-                                  example: "BERLIN - GERMANY"
+                                  example: 'BERLIN - GERMANY'
                                 coordinates:
                                   type: object
                                   properties:
@@ -663,30 +694,32 @@ paths:
                           transportations:
                             type: array
                             example:
-                              - id: VFIxfDEyMzQ1Njc4OTA.
+                              -
+                                id: VFIxfDEyMzQ1Njc4OTA.
                                 mode: air
-                                company: "FedEx Air"
+                                company: 'FedEx Air'
                                 number: FX1234
-                                port_of_loading: "JFK Airport"
-                                port_of_destination: "Berlin Brandenburg Airport"
+                                port_of_loading: 'JFK Airport'
+                                port_of_destination: 'Berlin Brandenburg Airport'
                                 dates:
-                                  scheduled_departure: "2025-04-01T14:30:00+00:00"
-                                  estimated_departure: "2025-04-01T14:30:00+00:00"
-                                  actual_departure: "2025-04-01T14:45:00+00:00"
-                                  scheduled_arrival: "2025-04-04T21:00:00+00:00"
-                                  estimated_arrival: "2025-04-04T22:00:00+00:00"
-                                  actual_arrival: "2025-04-04T22:15:00+00:00"
-                              - id: VFIyfDEyMzQ1Njc4OTA.
+                                  scheduled_departure: '2025-04-01T14:30:00+00:00'
+                                  estimated_departure: '2025-04-01T14:30:00+00:00'
+                                  actual_departure: '2025-04-01T14:45:00+00:00'
+                                  scheduled_arrival: '2025-04-04T21:00:00+00:00'
+                                  estimated_arrival: '2025-04-04T22:00:00+00:00'
+                                  actual_arrival: '2025-04-04T22:15:00+00:00'
+                              -
+                                id: VFIyfDEyMzQ1Njc4OTA.
                                 mode: road
-                                company: "FedEx Ground"
+                                company: 'FedEx Ground'
                                 number: FG5678
                                 dates:
-                                  scheduled_departure: "2025-04-05T08:00:00+00:00"
-                                  estimated_departure: "2025-04-05T08:00:00+00:00"
-                                  actual_departure: "2025-04-05T08:30:00+00:00"
-                                  scheduled_arrival: "2025-04-05T11:00:00+00:00"
-                                  estimated_arrival: "2025-04-05T11:30:00+00:00"
-                                  actual_arrival: "2025-04-05T11:25:00+00:00"
+                                  scheduled_departure: '2025-04-05T08:00:00+00:00'
+                                  estimated_departure: '2025-04-05T08:00:00+00:00'
+                                  actual_departure: '2025-04-05T08:30:00+00:00'
+                                  scheduled_arrival: '2025-04-05T11:00:00+00:00'
+                                  estimated_arrival: '2025-04-05T11:30:00+00:00'
+                                  actual_arrival: '2025-04-05T11:25:00+00:00'
                             items:
                               type: object
                               properties:
@@ -698,41 +731,42 @@ paths:
                                   example: air
                                 company:
                                   type: string
-                                  example: "FedEx Air"
+                                  example: 'FedEx Air'
                                 number:
                                   type: string
                                   example: FX1234
                                 port_of_loading:
                                   type: string
-                                  example: "JFK Airport"
+                                  example: 'JFK Airport'
                                 port_of_destination:
                                   type: string
-                                  example: "Berlin Brandenburg Airport"
+                                  example: 'Berlin Brandenburg Airport'
                                 dates:
                                   type: object
                                   properties:
                                     scheduled_departure:
                                       type: string
-                                      example: "2025-04-01T14:30:00+00:00"
+                                      example: '2025-04-01T14:30:00+00:00'
                                     estimated_departure:
                                       type: string
-                                      example: "2025-04-01T14:30:00+00:00"
+                                      example: '2025-04-01T14:30:00+00:00'
                                     actual_departure:
                                       type: string
-                                      example: "2025-04-01T14:45:00+00:00"
+                                      example: '2025-04-01T14:45:00+00:00'
                                     scheduled_arrival:
                                       type: string
-                                      example: "2025-04-04T21:00:00+00:00"
+                                      example: '2025-04-04T21:00:00+00:00'
                                     estimated_arrival:
                                       type: string
-                                      example: "2025-04-04T22:00:00+00:00"
+                                      example: '2025-04-04T22:00:00+00:00'
                                     actual_arrival:
                                       type: string
-                                      example: "2025-04-04T22:15:00+00:00"
+                                      example: '2025-04-04T22:15:00+00:00'
                           packages:
                             type: array
                             example:
-                              - id: UEsxfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEsxfDEyMzQ1Njc4OTA.
                                 ref: PKG001
                                 type: box
                                 weight: 8.5
@@ -742,7 +776,8 @@ paths:
                                   width: 30
                                   height: 20
                                   unit: cm
-                              - id: UEsyfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEsyfDEyMzQ1Njc4OTA.
                                 ref: PKG002
                                 type: box
                                 weight: 10
@@ -752,7 +787,8 @@ paths:
                                   width: 40
                                   height: 30
                                   unit: cm
-                              - id: UEszfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEszfDEyMzQ1Njc4OTA.
                                 ref: PKG003
                                 type: pallet
                                 weight: 6
@@ -809,17 +845,17 @@ paths:
               properties:
                 shippable_type:
                   type: string
-                  description: "Shippable type."
+                  description: 'Shippable type.'
                   example: shipment
                   nullable: true
                 shippable_id:
                   type: integer
-                  description: "Shippable ID."
+                  description: 'Shippable ID.'
                   example: 2
                   nullable: true
                 shipping_mode:
                   type: string
-                  description: "Shipping mode."
+                  description: 'Shipping mode.'
                   example: sea
                   nullable: false
                   enum:
@@ -829,76 +865,78 @@ paths:
                     - flight
                 track_with:
                   type: string
-                  description: "Integration you would like to use to track."
+                  description: 'Integration you would like to use to track.'
                   example: shipsgo_air
                   nullable: false
                 tracking_data:
                   type: object
-                  description: "Tracking data object."
+                  description: 'Tracking data object.'
                   example: []
                   nullable: false
                   properties:
                     shipper:
                       type: string
-                      description: "Airline or courier company (depends on shipping_mode)."
+                      description: 'Airline or courier company (depends on shipping_mode).'
                       example: dhl
                       nullable: false
                     tracking_number:
                       type: string
-                      description: "Tracking number. Required if shipping_mode=courier."
+                      description: 'Tracking number. Required if shipping_mode=courier.'
                       example: 1Z32A8A70401889686
                       nullable: false
                     awb_number:
                       type: string
-                      description: "Awb number. Required if shipping_mode=air."
+                      description: 'Awb number. Required if shipping_mode=air.'
                       example: 020-43026340
                       nullable: false
                     container_number:
                       type: string
-                      description: "Container number for sea shipping."
+                      description: 'Container number for sea shipping.'
                       example: MEDU9655399
                       nullable: false
                     bl_reference:
                       type: string
-                      description: "BL reference for sea shipping."
+                      description: 'BL reference for sea shipping.'
                       example: IL0033036
                       nullable: false
                     flight_number:
                       type: string
-                      description: "Flight number. Required if shipping_mode=flight."
+                      description: 'Flight number. Required if shipping_mode=flight.'
                       example: DL263
                       nullable: false
                     scheduled_on:
                       type: string
-                      description: "Scheduled on date. Required if shipping_mode=flight."
-                      example: "2025-05-06T11:17:31.524Z"
+                      description: 'Scheduled on date. Required if shipping_mode=flight.'
+                      example: '2025-05-06T11:17:31.524Z'
                       nullable: false
               required:
                 - shipping_mode
                 - tracking_data
     parameters:
-      - in: path
+      -
+        in: path
         name: partner_id
-        description: "The ID of the partner."
+        description: 'The ID of the partner.'
         example: 1
         required: true
         schema:
           type: integer
-  "/api/v1/partner/{partner_id}/trackings/{id}":
+  '/api/v1/partner/{partner_id}/trackings/{id}':
     get:
-      summary: "Get a Single Courier Tracking Gateway"
+      summary: 'Get a Single Courier Tracking Gateway'
       operationId: getASingleCourierTrackingGateway
-      description: ""
+      description: ''
       parameters:
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         200:
-          description: ""
+          description: ''
           content:
             application/json:
               schema:
@@ -918,35 +956,35 @@ paths:
                         text: Delivered
                         global_status: delivered
                         is_final: true
-                      tracking_link: "https://www.fedex.com/fedextrack/?trknbr=ABC123456789"
-                      created_at: "2025-04-01T09:30:00+00:00"
-                      updated_at: "2025-05-06T10:55:06+00:00"
+                      tracking_link: 'https://www.fedex.com/fedextrack/?trknbr=ABC123456789'
+                      created_at: '2025-04-01T09:30:00+00:00'
+                      updated_at: '2025-05-06T10:55:06+00:00'
                       company:
                         id: NDUxfDEyMzQ1Njc4OTA.
                         type: courier
                         name: FedEx
                       partner:
                         id: N3wxMjM0NTY3ODkw
-                        name: "Acme Corp"
+                        name: 'Acme Corp'
                       origin:
                         country_iso3: USA
-                        country_name: "United States"
-                        location: "NEW YORK - USA"
-                        city: "NEW YORK"
+                        country_name: 'United States'
+                        location: 'NEW YORK - USA'
+                        city: 'NEW YORK'
                       destination:
                         country_iso3: DEU
                         country_name: Germany
-                        location: "BERLIN - GERMANY"
+                        location: 'BERLIN - GERMANY'
                         city: BERLIN
                       dates:
-                        pickup_date: "2025-04-01T10:15:00+00:00"
-                        departure_date: "2025-04-01T14:30:00+00:00"
-                        estimated_arrival_date: "2025-04-05T09:00:00+00:00"
-                        delivery_date: "2025-04-05T11:25:00+00:00"
+                        pickup_date: '2025-04-01T10:15:00+00:00'
+                        departure_date: '2025-04-01T14:30:00+00:00'
+                        estimated_arrival_date: '2025-04-05T09:00:00+00:00'
+                        delivery_date: '2025-04-05T11:25:00+00:00'
                         discharge_date: null
-                        synced_at: "2025-05-06T10:55:06+00:00"
-                        created_at: "2025-04-01T09:30:00+00:00"
-                        updated_at: "2025-05-06T10:55:06+00:00"
+                        synced_at: '2025-05-06T10:55:06+00:00'
+                        created_at: '2025-04-01T09:30:00+00:00'
+                        updated_at: '2025-05-06T10:55:06+00:00'
                       shipment:
                         type: tracking_number
                         package_count: 3
@@ -955,82 +993,91 @@ paths:
                         co2e_in_kg: 125.8
                         order_id: ORD-12345
                       etas:
-                        - id: RVRBfDEyMzQ1Njc4OTA.
-                          eta: "2025-04-05T09:00:00+00:00"
+                        -
+                          id: RVRBfDEyMzQ1Njc4OTA.
+                          eta: '2025-04-05T09:00:00+00:00'
                           source: carrier
                       checkpoints:
-                        - id: Q0gxfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gxfDEyMzQ1Njc4OTA.
                           status: Delivered
                           status_code: DEL
-                          checkpoint_time: "2025-04-05T11:25:00+00:00"
-                          message: "Package delivered to recipient."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-05T11:25:00+00:00'
+                          message: 'Package delivered to recipient.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0gyfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gyfDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: OFD
-                          checkpoint_time: "2025-04-05T08:30:00+00:00"
-                          message: "Out for delivery."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-05T08:30:00+00:00'
+                          message: 'Out for delivery.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0gzfDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0gzfDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: ARR
-                          checkpoint_time: "2025-04-04T22:15:00+00:00"
-                          message: "Arrived at destination facility."
-                          location: "BERLIN - GERMANY"
+                          checkpoint_time: '2025-04-04T22:15:00+00:00'
+                          message: 'Arrived at destination facility.'
+                          location: 'BERLIN - GERMANY'
                           coordinates:
                             lat: 52.52
                             lng: 13.405
-                        - id: Q0g0fDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0g0fDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: DEP
-                          checkpoint_time: "2025-04-01T14:30:00+00:00"
-                          message: "Departed origin facility."
-                          location: "NEW YORK - USA"
+                          checkpoint_time: '2025-04-01T14:30:00+00:00'
+                          message: 'Departed origin facility.'
+                          location: 'NEW YORK - USA'
                           coordinates:
                             lat: 40.7128
                             lng: -74.006
-                        - id: Q0g1fDEyMzQ1Njc4OTA.
+                        -
+                          id: Q0g1fDEyMzQ1Njc4OTA.
                           status: InTransit
                           status_code: PU
-                          checkpoint_time: "2025-04-01T10:15:00+00:00"
-                          message: "Picked up by courier."
-                          location: "NEW YORK - USA"
+                          checkpoint_time: '2025-04-01T10:15:00+00:00'
+                          message: 'Picked up by courier.'
+                          location: 'NEW YORK - USA'
                           coordinates:
                             lat: 40.7128
                             lng: -74.006
                       transportations:
-                        - id: VFIxfDEyMzQ1Njc4OTA.
+                        -
+                          id: VFIxfDEyMzQ1Njc4OTA.
                           mode: air
-                          company: "FedEx Air"
+                          company: 'FedEx Air'
                           number: FX1234
-                          port_of_loading: "JFK Airport"
-                          port_of_destination: "Berlin Brandenburg Airport"
+                          port_of_loading: 'JFK Airport'
+                          port_of_destination: 'Berlin Brandenburg Airport'
                           dates:
-                            scheduled_departure: "2025-04-01T14:30:00+00:00"
-                            estimated_departure: "2025-04-01T14:30:00+00:00"
-                            actual_departure: "2025-04-01T14:45:00+00:00"
-                            scheduled_arrival: "2025-04-04T21:00:00+00:00"
-                            estimated_arrival: "2025-04-04T22:00:00+00:00"
-                            actual_arrival: "2025-04-04T22:15:00+00:00"
-                        - id: VFIyfDEyMzQ1Njc4OTA.
+                            scheduled_departure: '2025-04-01T14:30:00+00:00'
+                            estimated_departure: '2025-04-01T14:30:00+00:00'
+                            actual_departure: '2025-04-01T14:45:00+00:00'
+                            scheduled_arrival: '2025-04-04T21:00:00+00:00'
+                            estimated_arrival: '2025-04-04T22:00:00+00:00'
+                            actual_arrival: '2025-04-04T22:15:00+00:00'
+                        -
+                          id: VFIyfDEyMzQ1Njc4OTA.
                           mode: road
-                          company: "FedEx Ground"
+                          company: 'FedEx Ground'
                           number: FG5678
                           dates:
-                            scheduled_departure: "2025-04-05T08:00:00+00:00"
-                            estimated_departure: "2025-04-05T08:00:00+00:00"
-                            actual_departure: "2025-04-05T08:30:00+00:00"
-                            scheduled_arrival: "2025-04-05T11:00:00+00:00"
-                            estimated_arrival: "2025-04-05T11:30:00+00:00"
-                            actual_arrival: "2025-04-05T11:25:00+00:00"
+                            scheduled_departure: '2025-04-05T08:00:00+00:00'
+                            estimated_departure: '2025-04-05T08:00:00+00:00'
+                            actual_departure: '2025-04-05T08:30:00+00:00'
+                            scheduled_arrival: '2025-04-05T11:00:00+00:00'
+                            estimated_arrival: '2025-04-05T11:30:00+00:00'
+                            actual_arrival: '2025-04-05T11:25:00+00:00'
                       packages:
-                        - id: UEsxfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEsxfDEyMzQ1Njc4OTA.
                           ref: PKG001
                           type: box
                           weight: 8.5
@@ -1040,7 +1087,8 @@ paths:
                             width: 30
                             height: 20
                             unit: cm
-                        - id: UEsyfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEsyfDEyMzQ1Njc4OTA.
                           ref: PKG002
                           type: box
                           weight: 10.0
@@ -1050,7 +1098,8 @@ paths:
                             width: 40
                             height: 30
                             unit: cm
-                        - id: UEszfDEyMzQ1Njc4OTA.
+                        -
+                          id: UEszfDEyMzQ1Njc4OTA.
                           ref: PKG003
                           type: pallet
                           weight: 6.0
@@ -1106,13 +1155,13 @@ paths:
                                 example: true
                           tracking_link:
                             type: string
-                            example: "https://www.fedex.com/fedextrack/?trknbr=ABC123456789"
+                            example: 'https://www.fedex.com/fedextrack/?trknbr=ABC123456789'
                           created_at:
                             type: string
-                            example: "2025-04-01T09:30:00+00:00"
+                            example: '2025-04-01T09:30:00+00:00'
                           updated_at:
                             type: string
-                            example: "2025-05-06T10:55:06+00:00"
+                            example: '2025-05-06T10:55:06+00:00'
                           company:
                             type: object
                             properties:
@@ -1133,7 +1182,7 @@ paths:
                                 example: N3wxMjM0NTY3ODkw
                               name:
                                 type: string
-                                example: "Acme Corp"
+                                example: 'Acme Corp'
                           origin:
                             type: object
                             properties:
@@ -1142,13 +1191,13 @@ paths:
                                 example: USA
                               country_name:
                                 type: string
-                                example: "United States"
+                                example: 'United States'
                               location:
                                 type: string
-                                example: "NEW YORK - USA"
+                                example: 'NEW YORK - USA'
                               city:
                                 type: string
-                                example: "NEW YORK"
+                                example: 'NEW YORK'
                           destination:
                             type: object
                             properties:
@@ -1160,7 +1209,7 @@ paths:
                                 example: Germany
                               location:
                                 type: string
-                                example: "BERLIN - GERMANY"
+                                example: 'BERLIN - GERMANY'
                               city:
                                 type: string
                                 example: BERLIN
@@ -1169,28 +1218,28 @@ paths:
                             properties:
                               pickup_date:
                                 type: string
-                                example: "2025-04-01T10:15:00+00:00"
+                                example: '2025-04-01T10:15:00+00:00'
                               departure_date:
                                 type: string
-                                example: "2025-04-01T14:30:00+00:00"
+                                example: '2025-04-01T14:30:00+00:00'
                               estimated_arrival_date:
                                 type: string
-                                example: "2025-04-05T09:00:00+00:00"
+                                example: '2025-04-05T09:00:00+00:00'
                               delivery_date:
                                 type: string
-                                example: "2025-04-05T11:25:00+00:00"
+                                example: '2025-04-05T11:25:00+00:00'
                               discharge_date:
                                 type: string
                                 example: null
                               synced_at:
                                 type: string
-                                example: "2025-05-06T10:55:06+00:00"
+                                example: '2025-05-06T10:55:06+00:00'
                               created_at:
                                 type: string
-                                example: "2025-04-01T09:30:00+00:00"
+                                example: '2025-04-01T09:30:00+00:00'
                               updated_at:
                                 type: string
-                                example: "2025-05-06T10:55:06+00:00"
+                                example: '2025-05-06T10:55:06+00:00'
                           shipment:
                             type: object
                             properties:
@@ -1215,8 +1264,9 @@ paths:
                           etas:
                             type: array
                             example:
-                              - id: RVRBfDEyMzQ1Njc4OTA.
-                                eta: "2025-04-05T09:00:00+00:00"
+                              -
+                                id: RVRBfDEyMzQ1Njc4OTA.
+                                eta: '2025-04-05T09:00:00+00:00'
                                 source: carrier
                             items:
                               type: object
@@ -1226,55 +1276,60 @@ paths:
                                   example: RVRBfDEyMzQ1Njc4OTA.
                                 eta:
                                   type: string
-                                  example: "2025-04-05T09:00:00+00:00"
+                                  example: '2025-04-05T09:00:00+00:00'
                                 source:
                                   type: string
                                   example: carrier
                           checkpoints:
                             type: array
                             example:
-                              - id: Q0gxfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gxfDEyMzQ1Njc4OTA.
                                 status: Delivered
                                 status_code: DEL
-                                checkpoint_time: "2025-04-05T11:25:00+00:00"
-                                message: "Package delivered to recipient."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-05T11:25:00+00:00'
+                                message: 'Package delivered to recipient.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0gyfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gyfDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: OFD
-                                checkpoint_time: "2025-04-05T08:30:00+00:00"
-                                message: "Out for delivery."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-05T08:30:00+00:00'
+                                message: 'Out for delivery.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0gzfDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0gzfDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: ARR
-                                checkpoint_time: "2025-04-04T22:15:00+00:00"
-                                message: "Arrived at destination facility."
-                                location: "BERLIN - GERMANY"
+                                checkpoint_time: '2025-04-04T22:15:00+00:00'
+                                message: 'Arrived at destination facility.'
+                                location: 'BERLIN - GERMANY'
                                 coordinates:
                                   lat: 52.52
                                   lng: 13.405
-                              - id: Q0g0fDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0g0fDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: DEP
-                                checkpoint_time: "2025-04-01T14:30:00+00:00"
-                                message: "Departed origin facility."
-                                location: "NEW YORK - USA"
+                                checkpoint_time: '2025-04-01T14:30:00+00:00'
+                                message: 'Departed origin facility.'
+                                location: 'NEW YORK - USA'
                                 coordinates:
                                   lat: 40.7128
                                   lng: -74.006
-                              - id: Q0g1fDEyMzQ1Njc4OTA.
+                              -
+                                id: Q0g1fDEyMzQ1Njc4OTA.
                                 status: InTransit
                                 status_code: PU
-                                checkpoint_time: "2025-04-01T10:15:00+00:00"
-                                message: "Picked up by courier."
-                                location: "NEW YORK - USA"
+                                checkpoint_time: '2025-04-01T10:15:00+00:00'
+                                message: 'Picked up by courier.'
+                                location: 'NEW YORK - USA'
                                 coordinates:
                                   lat: 40.7128
                                   lng: -74.006
@@ -1292,13 +1347,13 @@ paths:
                                   example: DEL
                                 checkpoint_time:
                                   type: string
-                                  example: "2025-04-05T11:25:00+00:00"
+                                  example: '2025-04-05T11:25:00+00:00'
                                 message:
                                   type: string
-                                  example: "Package delivered to recipient."
+                                  example: 'Package delivered to recipient.'
                                 location:
                                   type: string
-                                  example: "BERLIN - GERMANY"
+                                  example: 'BERLIN - GERMANY'
                                 coordinates:
                                   type: object
                                   properties:
@@ -1311,30 +1366,32 @@ paths:
                           transportations:
                             type: array
                             example:
-                              - id: VFIxfDEyMzQ1Njc4OTA.
+                              -
+                                id: VFIxfDEyMzQ1Njc4OTA.
                                 mode: air
-                                company: "FedEx Air"
+                                company: 'FedEx Air'
                                 number: FX1234
-                                port_of_loading: "JFK Airport"
-                                port_of_destination: "Berlin Brandenburg Airport"
+                                port_of_loading: 'JFK Airport'
+                                port_of_destination: 'Berlin Brandenburg Airport'
                                 dates:
-                                  scheduled_departure: "2025-04-01T14:30:00+00:00"
-                                  estimated_departure: "2025-04-01T14:30:00+00:00"
-                                  actual_departure: "2025-04-01T14:45:00+00:00"
-                                  scheduled_arrival: "2025-04-04T21:00:00+00:00"
-                                  estimated_arrival: "2025-04-04T22:00:00+00:00"
-                                  actual_arrival: "2025-04-04T22:15:00+00:00"
-                              - id: VFIyfDEyMzQ1Njc4OTA.
+                                  scheduled_departure: '2025-04-01T14:30:00+00:00'
+                                  estimated_departure: '2025-04-01T14:30:00+00:00'
+                                  actual_departure: '2025-04-01T14:45:00+00:00'
+                                  scheduled_arrival: '2025-04-04T21:00:00+00:00'
+                                  estimated_arrival: '2025-04-04T22:00:00+00:00'
+                                  actual_arrival: '2025-04-04T22:15:00+00:00'
+                              -
+                                id: VFIyfDEyMzQ1Njc4OTA.
                                 mode: road
-                                company: "FedEx Ground"
+                                company: 'FedEx Ground'
                                 number: FG5678
                                 dates:
-                                  scheduled_departure: "2025-04-05T08:00:00+00:00"
-                                  estimated_departure: "2025-04-05T08:00:00+00:00"
-                                  actual_departure: "2025-04-05T08:30:00+00:00"
-                                  scheduled_arrival: "2025-04-05T11:00:00+00:00"
-                                  estimated_arrival: "2025-04-05T11:30:00+00:00"
-                                  actual_arrival: "2025-04-05T11:25:00+00:00"
+                                  scheduled_departure: '2025-04-05T08:00:00+00:00'
+                                  estimated_departure: '2025-04-05T08:00:00+00:00'
+                                  actual_departure: '2025-04-05T08:30:00+00:00'
+                                  scheduled_arrival: '2025-04-05T11:00:00+00:00'
+                                  estimated_arrival: '2025-04-05T11:30:00+00:00'
+                                  actual_arrival: '2025-04-05T11:25:00+00:00'
                             items:
                               type: object
                               properties:
@@ -1346,41 +1403,42 @@ paths:
                                   example: air
                                 company:
                                   type: string
-                                  example: "FedEx Air"
+                                  example: 'FedEx Air'
                                 number:
                                   type: string
                                   example: FX1234
                                 port_of_loading:
                                   type: string
-                                  example: "JFK Airport"
+                                  example: 'JFK Airport'
                                 port_of_destination:
                                   type: string
-                                  example: "Berlin Brandenburg Airport"
+                                  example: 'Berlin Brandenburg Airport'
                                 dates:
                                   type: object
                                   properties:
                                     scheduled_departure:
                                       type: string
-                                      example: "2025-04-01T14:30:00+00:00"
+                                      example: '2025-04-01T14:30:00+00:00'
                                     estimated_departure:
                                       type: string
-                                      example: "2025-04-01T14:30:00+00:00"
+                                      example: '2025-04-01T14:30:00+00:00'
                                     actual_departure:
                                       type: string
-                                      example: "2025-04-01T14:45:00+00:00"
+                                      example: '2025-04-01T14:45:00+00:00'
                                     scheduled_arrival:
                                       type: string
-                                      example: "2025-04-04T21:00:00+00:00"
+                                      example: '2025-04-04T21:00:00+00:00'
                                     estimated_arrival:
                                       type: string
-                                      example: "2025-04-04T22:00:00+00:00"
+                                      example: '2025-04-04T22:00:00+00:00'
                                     actual_arrival:
                                       type: string
-                                      example: "2025-04-04T22:15:00+00:00"
+                                      example: '2025-04-04T22:15:00+00:00'
                           packages:
                             type: array
                             example:
-                              - id: UEsxfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEsxfDEyMzQ1Njc4OTA.
                                 ref: PKG001
                                 type: box
                                 weight: 8.5
@@ -1390,7 +1448,8 @@ paths:
                                   width: 30
                                   height: 20
                                   unit: cm
-                              - id: UEsyfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEsyfDEyMzQ1Njc4OTA.
                                 ref: PKG002
                                 type: box
                                 weight: 10
@@ -1400,7 +1459,8 @@ paths:
                                   width: 40
                                   height: 30
                                   unit: cm
-                              - id: UEszfDEyMzQ1Njc4OTA.
+                              -
+                                id: UEszfDEyMzQ1Njc4OTA.
                                 ref: PKG003
                                 type: pallet
                                 weight: 6
@@ -1449,35 +1509,38 @@ paths:
       tags:
         - Tracking
     parameters:
-      - in: path
+      -
+        in: path
         name: partner_id
-        description: "The ID of the partner."
+        description: 'The ID of the partner.'
         example: 1
         required: true
         schema:
           type: integer
-      - in: path
+      -
+        in: path
         name: id
-        description: "The ID of the tracking."
+        description: 'The ID of the tracking.'
         example: 1
         required: true
         schema:
           type: integer
-  "/api/v1/partner/{partner_id}/orders":
+  '/api/v1/partner/{partner_id}/orders':
     post:
-      summary: "Create a new order"
+      summary: 'Create a new order'
       operationId: createANewOrder
-      description: ""
+      description: ''
       parameters:
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         200:
-          description: ""
+          description: ''
           content:
             text/plain:
               schema:
@@ -1494,28 +1557,28 @@ paths:
               properties:
                 ref:
                   type: string
-                  description: "Order reference number."
+                  description: 'Order reference number.'
                   example: PackagingMaterial
                   nullable: false
                 partner_service_id:
                   type: string
-                  description: "The <code>id</code> of an existing record in the partner_services table."
-                  example: sunt
+                  description: 'The <code>id</code> of an existing record in the partner_services table.'
+                  example: porro
                   nullable: false
                 ref2:
                   type: string
-                  description: "Must not be greater than 255 characters."
-                  example: dmmciljowdbylagylox
+                  description: 'Must not be greater than 255 characters.'
+                  example: doqihjldsnymrdifwmrbwssg
                   nullable: true
                 rma:
                   type: string
-                  description: "Must not be greater than 255 characters."
-                  example: rmcna
+                  description: 'Must not be greater than 255 characters.'
+                  example: xvwyvmqmuqjlhsa
                   nullable: true
                 remarks:
                   type: string
-                  description: "Must not be greater than 255 characters."
-                  example: mzpkruelrzpjrqtgpswver
+                  description: 'Must not be greater than 255 characters.'
+                  example: jxcoj
                   nullable: true
                 type:
                   type: string
@@ -1524,12 +1587,12 @@ paths:
                   nullable: false
                 partner_service:
                   type: string
-                  description: "Partner service type."
+                  description: 'Partner service type.'
                   example: replenishment
                   nullable: false
                 shipments:
                   type: array
-                  description: "Array of shipments for this order."
+                  description: 'Array of shipments for this order.'
                   example:
                     - []
                   items:
@@ -1537,23 +1600,23 @@ paths:
                     properties:
                       ref:
                         type: string
-                        description: "Shipment reference."
+                        description: 'Shipment reference.'
                         example: PackagingMaterial-Schiphol
                         nullable: false
                       type:
                         type: string
-                        description: "Shipment type."
+                        description: 'Shipment type.'
                         example: inbound
                         nullable: false
                       origin:
                         type: object
-                        description: "Origin information."
+                        description: 'Origin information.'
                         example: []
                         nullable: false
                         properties:
                           type:
                             type: string
-                            description: "Origin type."
+                            description: 'Origin type (address or hub).'
                             example: address
                             nullable: false
                           address:
@@ -1564,18 +1627,18 @@ paths:
                             properties:
                               address_name:
                                 type: string
-                                description: "Address name."
-                                example: "Jimmy Horjus"
+                                description: 'Address name.'
+                                example: 'Jimmy Horjus'
                                 nullable: false
                               customer_name:
                                 type: string
-                                description: "Customer name."
+                                description: 'Customer name.'
                                 example: 'LiveU \/o Rapid Logistics'
                                 nullable: false
                               address:
                                 type: string
-                                description: "Address line."
-                                example: "Airborne Avenue 87"
+                                description: 'Address line.'
+                                example: 'Airborne Avenue 87'
                                 nullable: false
                               city:
                                 type: string
@@ -1584,8 +1647,8 @@ paths:
                                 nullable: false
                               zip:
                                 type: string
-                                description: "ZIP/Postal code."
-                                example: "2133 LV"
+                                description: 'ZIP/Postal code.'
+                                example: '2133 LV'
                                 nullable: false
                               country:
                                 type: string
@@ -1594,12 +1657,12 @@ paths:
                                 nullable: false
                               address_type:
                                 type: string
-                                description: "Address type."
+                                description: 'Address type.'
                                 example: oem
                                 nullable: false
                           contacts:
                             type: array
-                            description: "Contact information."
+                            description: "Contact information when origin type is 'address'."
                             example:
                               - []
                             items:
@@ -1607,38 +1670,43 @@ paths:
                               properties:
                                 first_name:
                                   type: string
-                                  description: "First name."
+                                  description: 'First name.'
                                   example: Jimmy
                                   nullable: false
                                 last_name:
                                   type: string
-                                  description: "Last name."
+                                  description: 'Last name.'
                                   example: Horjus
                                   nullable: false
                                 phone:
                                   type: string
-                                  description: "Phone number."
-                                  example: "+31206532323"
+                                  description: 'Phone number.'
+                                  example: '+31206532323'
                                   nullable: false
                                 email:
                                   type: string
-                                  description: "Email address."
+                                  description: 'Email address.'
                                   example: j.horjus@rapidlogistics.nl
                                   nullable: false
                                 type:
                                   type: string
-                                  description: "Contact type."
+                                  description: 'Contact type.'
                                   example: main
                                   nullable: false
+                          hub:
+                            type: string
+                            description: "Hub name when origin type is 'hub'."
+                            example: Amsterdam
+                            nullable: false
                       destination:
                         type: object
-                        description: "Destination information."
+                        description: 'Destination information.'
                         example: []
                         nullable: false
                         properties:
                           type:
                             type: string
-                            description: "Destination type."
+                            description: 'Destination type (address or hub).'
                             example: hub
                             nullable: false
                           hub:
@@ -1646,9 +1714,83 @@ paths:
                             description: "Hub name when destination type is 'hub'."
                             example: Schiphol
                             nullable: false
+                          address:
+                            type: object
+                            description: "Address information when destination type is 'address'."
+                            example: []
+                            nullable: false
+                            properties:
+                              address_name:
+                                type: string
+                                description: 'Address name.'
+                                example: 'Recipient Name'
+                                nullable: false
+                              customer_name:
+                                type: string
+                                description: 'Customer name.'
+                                example: 'Destination Company'
+                                nullable: false
+                              address:
+                                type: string
+                                description: 'Address line.'
+                                example: 'Business Park 123'
+                                nullable: false
+                              city:
+                                type: string
+                                description: City.
+                                example: Rotterdam
+                                nullable: false
+                              zip:
+                                type: string
+                                description: 'ZIP/Postal code.'
+                                example: '3001 AB'
+                                nullable: false
+                              country:
+                                type: string
+                                description: Country.
+                                example: Netherlands
+                                nullable: false
+                              address_type:
+                                type: string
+                                description: 'Address type.'
+                                example: delivery
+                                nullable: false
+                          contacts:
+                            type: array
+                            description: "Contact information when destination type is 'address'."
+                            example:
+                              - []
+                            items:
+                              type: object
+                              properties:
+                                first_name:
+                                  type: string
+                                  description: 'First name.'
+                                  example: John
+                                  nullable: false
+                                last_name:
+                                  type: string
+                                  description: 'Last name.'
+                                  example: Doe
+                                  nullable: false
+                                phone:
+                                  type: string
+                                  description: 'Phone number.'
+                                  example: '+31612345678'
+                                  nullable: false
+                                email:
+                                  type: string
+                                  description: 'Email address.'
+                                  example: john.doe@example.com
+                                  nullable: false
+                                type:
+                                  type: string
+                                  description: 'Contact type.'
+                                  example: recipient
+                                  nullable: false
                       items:
                         type: array
-                        description: "Array of items in the shipment."
+                        description: 'Array of items in the shipment.'
                         example:
                           - []
                         items:
@@ -1656,44 +1798,44 @@ paths:
                           properties:
                             uid:
                               type: integer
-                              description: "Unique identifier for the item."
+                              description: 'Unique identifier for the item.'
                               example: 886373
                               nullable: false
                             item:
                               type: string
-                              description: "Item identifier."
-                              example: "Packaging Material"
+                              description: 'Item identifier.'
+                              example: 'Packaging Material'
                               nullable: false
                             quantity:
                               type: integer
-                              description: "Quantity of the item."
+                              description: 'Quantity of the item.'
                               example: 300
                               nullable: false
                             batch:
                               type: string|null
-                              description: "Batch identifier."
+                              description: 'Batch identifier.'
                               example: null
                               nullable: false
                             rev:
                               type: string|null
-                              description: "Revision identifier."
+                              description: 'Revision identifier.'
                               example: null
                               nullable: false
                             sub_inventory:
                               type: string
-                              description: "Sub inventory name."
+                              description: 'Sub inventory name.'
                               example: ICL-NL-New
                               nullable: false
                             serials:
                               type: array
-                              description: "Array of serial numbers."
+                              description: 'Array of serial numbers.'
                               example:
                                 - serial-1
                               items:
                                 type: string
                             pallets:
                               type: array
-                              description: "Array of pallets."
+                              description: 'Array of pallets.'
                               example:
                                 - []
                               items:
@@ -1701,43 +1843,20 @@ paths:
                                 properties:
                                   ref:
                                     type: string
-                                    description: "Reference identifier for the pallet."
+                                    description: 'Reference identifier for the pallet.'
                                     example: pallet-1
                                     nullable: false
                                   boxes:
                                     type: array
-                                    description: "Array of boxes within the pallet."
+                                    description: 'Array of boxes within the pallet.'
                                     example:
                                       - []
                                     items:
                                       type: object
-                                      properties:
-                                        {
-                                          ref:
-                                            {
-                                              type: string,
-                                              description: "Reference identifier for the box.",
-                                              example: box-1,
-                                              nullable: false,
-                                            },
-                                          serials:
-                                            {
-                                              type: array,
-                                              description: "Array of serial numbers for the box.",
-                                              example: [serial-2, serial-3],
-                                              items: { type: string },
-                                            },
-                                          quantity:
-                                            {
-                                              type: integer,
-                                              description: "Quantity of items in the box.",
-                                              example: 2,
-                                              nullable: false,
-                                            },
-                                        }
+                                      properties: { ref: { type: string, description: 'Reference identifier for the box.', example: box-1, nullable: false }, serials: { type: array, description: 'Array of serial numbers for the box.', example: [serial-2, serial-3], items: { type: string } }, quantity: { type: integer, description: 'Quantity of items in the box.', example: 2, nullable: false } }
                             boxes:
                               type: array
-                              description: "Array of boxes not associated with pallets."
+                              description: 'Array of boxes not associated with pallets.'
                               example:
                                 - []
                               items:
@@ -1745,12 +1864,12 @@ paths:
                                 properties:
                                   ref:
                                     type: string
-                                    description: "Reference identifier for the box."
+                                    description: 'Reference identifier for the box.'
                                     example: box-3
                                     nullable: false
                                   serials:
                                     type: array
-                                    description: "Array of serial numbers for the box."
+                                    description: 'Array of serial numbers for the box.'
                                     example:
                                       - serial-4
                                       - serial-5
@@ -1758,44 +1877,47 @@ paths:
                                       type: string
                                   quantity:
                                     type: integer
-                                    description: "Quantity of items in the box."
+                                    description: 'Quantity of items in the box.'
                                     example: 2
                                     nullable: false
               required:
                 - partner_service_id
     parameters:
-      - in: path
+      -
+        in: path
         name: partner_id
-        description: "The ID of the partner."
+        description: 'The ID of the partner.'
         example: 1
         required: true
         schema:
           type: integer
-  "/api/v1/partner/{partner_id}/orders/{order_id}/items":
+  '/api/v1/partner/{partner_id}/orders/{order_id}/items':
     post:
-      summary: "Create a new order item"
+      summary: 'Create a new order item'
       operationId: createANewOrderItem
-      description: ""
+      description: ''
       parameters:
-        - in: query
+        -
+          in: query
           name: with
-          description: "allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partMaster hub shipments"
+          description: 'allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partMaster hub shipments'
           example: null
           required: false
           schema:
             type: string
-            description: "allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partMaster hub shipments"
+            description: 'allowed relations list: (one,two,three); &nbsp;&nbsp;&nbsp;&nbsp;allowed: partMaster hub shipments'
             example: null
             nullable: false
-        - in: header
+        -
+          in: header
           name: Organisation
-          description: ""
+          description: ''
           example: unilog
           schema:
             type: string
       responses:
         200:
-          description: ""
+          description: ''
           content:
             text/plain:
               schema:
@@ -1812,36 +1934,36 @@ paths:
               properties:
                 shipment_ref:
                   type: string
-                  description: "This field is required when <code>shipment_id</code> is not present."
-                  example: ""
+                  description: 'This field is required when <code>shipment_id</code> is not present.'
+                  example: ''
                   nullable: false
                   enum:
-                    - ""
+                    - ''
                 shipment_id:
                   type: integer
-                  description: "This field is required when <code>shipment_ref</code> is not present."
-                  example: ""
+                  description: 'This field is required when <code>shipment_ref</code> is not present.'
+                  example: ''
                   nullable: false
                   enum:
-                    - ""
+                    - ''
                 uid:
                   type: integer
-                  description: "Unique identifier for the item."
+                  description: 'Unique identifier for the item.'
                   example: 886373
                   nullable: false
                 part_master_id:
                   type: string
-                  description: ""
-                  example: et
+                  description: ''
+                  example: officiis
                   nullable: false
                 hub_id:
                   type: string
-                  description: ""
-                  example: saepe
+                  description: ''
+                  example: tenetur
                   nullable: false
                 serials:
                   type: array
-                  description: "Array of serial numbers."
+                  description: 'Array of serial numbers.'
                   example:
                     - serial-1
                   items:
@@ -1849,28 +1971,28 @@ paths:
                     nullable: true
                 batch:
                   type: string|null
-                  description: "Batch identifier."
+                  description: 'Batch identifier.'
                   example: null
                   nullable: true
                 configurations:
                   type: string
-                  description: "Must not be greater than 255 characters."
-                  example: xuqfj
+                  description: 'Must not be greater than 255 characters.'
+                  example: abdji
                   nullable: true
                 quantity:
                   type: integer
-                  description: "Quantity of the item."
+                  description: 'Quantity of the item.'
                   example: 300
                   nullable: false
                 price:
                   type: number
-                  description: "Must be at least 0."
-                  example: 6
+                  description: 'Must be at least 0.'
+                  example: 40
                   nullable: false
                 currency:
                   type: string
-                  description: ""
-                  example: quia
+                  description: ''
+                  example: at
                   nullable: false
                 type:
                   type: string
@@ -1879,31 +2001,34 @@ paths:
                   nullable: false
                 item:
                   type: string
-                  description: "Item identifier."
-                  example: "Packaging Material"
+                  description: 'Item identifier.'
+                  example: 'Packaging Material'
                   nullable: false
                 rev:
                   type: string|null
-                  description: "Revision identifier."
+                  description: 'Revision identifier.'
                   example: null
                   nullable: false
                 sub_inventory:
                   type: string
-                  description: "Sub inventory name."
+                  description: 'Sub inventory name.'
                   example: ICL-NL-New
                   nullable: false
                 pallets:
                   type: array
-                  description: "Array of pallets."
+                  description: 'Array of pallets.'
                   example:
-                    - ref: pallet-1
+                    -
+                      ref: pallet-1
                       boxes:
-                        - ref: box-1
+                        -
+                          ref: box-1
                           serials:
                             - serial-2
                             - serial-3
                           quantity: 2
-                        - ref: box-2
+                        -
+                          ref: box-2
                           serials: []
                           quantity: 20
                   items:
@@ -1911,12 +2036,12 @@ paths:
                     properties:
                       ref:
                         type: string
-                        description: "Reference identifier for the pallet."
+                        description: 'Reference identifier for the pallet.'
                         example: pallet-1
                         nullable: false
                       boxes:
                         type: array
-                        description: "Array of boxes within the pallet."
+                        description: 'Array of boxes within the pallet.'
                         example:
                           - []
                         items:
@@ -1924,12 +2049,12 @@ paths:
                           properties:
                             ref:
                               type: string
-                              description: "Reference identifier for the box."
+                              description: 'Reference identifier for the box.'
                               example: box-1
                               nullable: false
                             serials:
                               type: array
-                              description: "Array of serial numbers for the box."
+                              description: 'Array of serial numbers for the box.'
                               example:
                                 - serial-2
                                 - serial-3
@@ -1937,14 +2062,15 @@ paths:
                                 type: string
                             quantity:
                               type: integer
-                              description: "Quantity of items in the box."
+                              description: 'Quantity of items in the box.'
                               example: 2
                               nullable: false
                 boxes:
                   type: array
-                  description: "Array of boxes not associated with pallets."
+                  description: 'Array of boxes not associated with pallets.'
                   example:
-                    - ref: box-3
+                    -
+                      ref: box-3
                       serials:
                         - serial-4
                         - serial-5
@@ -1954,12 +2080,12 @@ paths:
                     properties:
                       ref:
                         type: string
-                        description: "Reference identifier for the box."
+                        description: 'Reference identifier for the box.'
                         example: box-3
                         nullable: false
                       serials:
                         type: array
-                        description: "Array of serial numbers for the box."
+                        description: 'Array of serial numbers for the box.'
                         example:
                           - serial-4
                           - serial-5
@@ -1967,7 +2093,7 @@ paths:
                           type: string
                       quantity:
                         type: integer
-                        description: "Quantity of items in the box."
+                        description: 'Quantity of items in the box.'
                         example: 2
                         nullable: false
               required:
@@ -1976,16 +2102,18 @@ paths:
                 - price
                 - currency
     parameters:
-      - in: path
+      -
+        in: path
         name: partner_id
-        description: "The ID of the partner."
+        description: 'The ID of the partner.'
         example: 1
         required: true
         schema:
           type: integer
-      - in: path
+      -
+        in: path
         name: order_id
-        description: "The ID of the order."
+        description: 'The ID of the order.'
         example: 1
         required: true
         schema:
