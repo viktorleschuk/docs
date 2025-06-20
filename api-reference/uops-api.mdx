@@ -1,0 +1,81 @@
+---
+title: uOps API Examples
+description: "Manually documented API call examples for uOps module"
+---
+
+## 🔄 Create an Order
+
+### POST `/orders`
+
+Create a new order with items and delivery instructions.
+
+#### 🧾 Example Request
+
+```bash
+curl -X POST https://api.logivice.com/v1/orders \
+  -H "Authorization: Bearer sk_live_xxx" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "ref": "ORDER-1234",
+    "servicelevel": "DDP",
+    "warehouse": "ICL-ISR-New",
+    "items": [
+      {
+        "item": "LU300S-5G-2-4G-2",
+        "quantity": 1,
+        "configuration": "L30GL22HAVPAN"
+      }
+    ],
+    "address": {
+      "country": "Japan",
+      "city": "Tokyo",
+      "zip": "108-8404"
+    }
+  }'
+```
+
+#### 📦 Example Response
+
+```json
+{
+  "order_id": 8721,
+  "ref": "ORDER-1234",
+  "status": "created",
+  "created_at": "2025-06-20T11:00:00Z"
+}
+```
+
+---
+
+## 📋 Get Order Status
+
+### GET `/orders/{ref}`
+
+Returns the current status and fulfillment info of the order.
+
+#### 🔍 Example
+
+```bash
+curl -X GET https://api.logivice.com/v1/orders/ORDER-1234 \
+  -H "Authorization: Bearer sk_live_xxx"
+```
+
+#### ✅ Example Response
+
+```json
+{
+  "ref": "ORDER-1234",
+  "status": "in_progress",
+  "items": [
+    {
+      "item": "LU300S-5G-2-4G-2",
+      "serial": "3S2440-48206",
+      "status": "closed"
+    }
+  ]
+}
+```
+
+---
+
+## 🛠 Use this page to document all practical examples for your uOps API.
