@@ -16,11 +16,12 @@
         {
           "group": "Modules",
           "pages": [
-            "features/ucontrol",
-            "features/uops",
+            "modules/ucontrol",
+            "modules/ucontrol/carriers",
+            "modules/uops",
             "api-reference/uops-api",
-            "features/notebook",
-            "features/cockpit"
+            "modules/notebook",
+            "modules/cockpit"
           ]
         }
       ]
