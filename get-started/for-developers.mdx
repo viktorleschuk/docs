@@ -3,21 +3,73 @@ title: Developers Setup
 description: "Integrate Logivice into your stack"
 ---
 
-## Authentication
+## Logivice API
 
-Send an HTTP header:
+| Purpose                | URL                                |
+|------------------------|------------------------------------|
+| Production (base URL)  | `https://api.scaas.ai`             |
+| Testing (sandbox URL)  | `https://dev-api.logivice.com`     |
 
-```text
-Authorization: Bearer <API_KEY>
+Switch the base URL above to target the right environment while developing or debugging.
+
+---
+
+## Authentication 🔐
+
+Logivice uses **Bearer-token authentication** for every request.
+
+```http
+Authorization: Bearer YOUR_API_KEY
 ```
 
-## Sandbox
+### How to get an API key  
+1. Open **uControl > Profile > API Tokens**.  
+2. Select the **+** button to create a token.  
+3. Copy the key – you will not be able to see it again.  
 
-Use `https://sandbox.api.logivice.com` to test without affecting production data.
+> You can also call the API from a single-page app (SPA) with session cookies instead of a bearer token.
 
-## SDKs
+### Example request
 
-| Language | Package |
-|----------|---------|
-| PHP      | `composer require logivice/sdk` |
-| JS/TS    | `npm install @logivice/sdk` |
+```bash
+curl -X GET https://api.scaas.ai/v1/status \
+  -H "Authorization: Bearer sk_live_example123"
+```
+
+A successful call returns `200 OK` with a simple JSON status object.
+
+---
+
+## Global Filtering 🗂️
+
+Most list endpoints support flexible query-string filters.  
+Each filter compares a **field name** with a value (or values) you supply.
+
+| Syntax                                | Meaning                                          |
+|---------------------------------------|--------------------------------------------------|
+| `test_name=test`                      | Exact match (`=`)                                |
+| `test_name=*test*`                    | Substring/LIKE match (wrap text in `*`)          |
+| `test_name[]=test&test_name[]=test1`  | Array **IN** search (`test` or `test1`)          |
+| `test_name!=value`                    | Not-equal                                         |
+| Comparison operators                  | `!=` `=` `<` `<=` `>` `>=`                        |
+| Array operators                       | `=` `!=` (on each element)                       |
+
+### Filter examples
+
+```text
+# All orders where status is exactly "open"
+status=open
+
+# All parts whose name contains "adapter"
+part_name=*adapter*
+
+# All items where quantity > 100
+quantity>100
+
+# Multiple possible hubs
+hub[]=AMS&hub[]=LAX
+```
+
+Only the fields documented for each endpoint can be used as filters; unknown fields are ignored.
+
+---
