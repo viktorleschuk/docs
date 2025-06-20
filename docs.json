@@ -38,18 +38,7 @@
           }
         ]
       },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "API Documentation",
-            "openapi": {
-              "source": "/api-reference/openapi.yaml",
-              "directory": "api-reference"
-            }
-          }
-        ]
-      },
+      
       {
         "tab": "Resources",
         "groups": [
