@@ -1,0 +1,21 @@
+---
+title: Quickstart
+description: "Start using Logivice in minutes"
+---
+
+## Prerequisites
+
+1. Logivice account  
+2. API key with proper scope  
+3. cURL or Postman for testing  
+
+## Steps
+
+1. Generate an API key in Cockpit -> Settings -> API Keys.  
+2. Call `GET /status` to confirm connectivity.  
+3. Follow module guides to create your first tracking entry, order, or workflow.
+
+```bash
+curl -H "Authorization: Bearer <API_KEY>" \
+  https://api.logivice.com/v1/status
+```
