@@ -38,8 +38,9 @@
               {
                 "group": "uControl",
                 "pages": [
-                  "features/ucontrol", 
-                  "modules/ucontrol/carriers"
+                  "features/ucontrol",
+                  "modules/ucontrol/carriers", 
+                  "features/ucontrol"
                 ]
               }
             ]
