@@ -18,6 +18,7 @@
           "pages": [
             "features/ucontrol",
             "features/uops",
+            "api-reference/uops-api",
             "features/notebook",
             "features/cockpit"
           ]
