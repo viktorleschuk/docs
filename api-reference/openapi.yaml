@@ -1,0 +1,96 @@
+openapi: 3.0.0
+info:
+  title: Logivice API
+  version: 1.0.0
+  description: >
+    API for interacting with the Logivice platform, including authentication, orders, inventory, and tracking.
+servers:
+  - url: https://api.scaas.ai
+    description: Production
+  - url: https://dev-api.logivice.com
+    description: Development
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+security:
+  - bearerAuth: []
+paths:
+  /status:
+    get:
+      summary: Health check
+      operationId: getStatus
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  /orders:
+    post:
+      summary: Create a new order
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ref:
+                  type: string
+                warehouse:
+                  type: string
+                servicelevel:
+                  type: string
+                items:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      item:
+                        type: string
+                      quantity:
+                        type: integer
+                      configuration:
+                        type: string
+      responses:
+        '201':
+          description: Order created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  order_id:
+                    type: integer
+                  status:
+                    type: string
+  /orders/{ref}:
+    get:
+      summary: Get order status
+      operationId: getOrder
+      parameters:
+        - name: ref
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Order details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ref:
+                    type: string
+                  status:
+                    type: string
