@@ -16,12 +16,21 @@
         {
           "group": "Modules",
           "pages": [
-            "features/ucontrol",
-            "modules/ucontrol/carriers",
+            // Keep general module features here if they are not specific sub-pages of ucontrol
             "features/uops",
             "api-reference/uops-api",
             "features/notebook",
             "features/cockpit"
+          ],
+          // THIS IS THE KEY CHANGE: Create a new group for ucontrol and its sub-pages
+          "groups": [
+            {
+              "group": "uControl", // This will be the main 'features/ucontrol' item in the sidebar
+              "pages": [
+                "features/ucontrol", // This page is now the "parent" of the nested items
+                "modules/ucontrol/carriers" // This is the sub-page
+              ]
+            }
           ]
         }
       ]
